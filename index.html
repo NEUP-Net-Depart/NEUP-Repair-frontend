@@ -28,6 +28,7 @@
                     </h4>
                     <br>
                 </div>
+                <div class="btn btn-flat white-text" id="skipAnime">跳过动画</div>
             </div>
             <!-- anime-after -->
             <div class="intro container" id="intro">
@@ -143,7 +144,7 @@
         </div>
     </div>
     <script>
-        function debug() {
+        function skip() {
            // Disable all anime
             $("#blue-screen").addClass("blue-vanish");
             $("#intro").addClass("intro-show");
@@ -179,24 +180,26 @@
             $("#hidden-table").show();
             $("html, body").animate({
                 scrollTop: $("#hidden-table").offset().top
-            }, 2000);
+            }, 1000);
             $("#hidden-table").addClass("hidden-table-show");
+        });
+
+        $("#skipAnime").click(function() {
+            skip();
         });
 
         $("#submit").click(function() {
             jsonObj = JSON.stringify($('form').serializeObject());
             console.log(jsonObj);
-            for(var k = 0; k < 100000000; k++) {
-            }
             $.ajax({
                 url: ".",
                 data: jsonObj,
                 method: "POST",
                 async: true,
                 success: function (resp) {
-                    resp = "申请成功~ 您的邀请码为: 0b4baeed4ba36c95f6f25cbf57048d91";
-                    $("#spin").removeClass("active");
-                    $("#result-modal-body").text(resp);
+                    //resp = "申请成功~ 您的邀请码为: 0b4baeed4ba36c95f6f25cbf57048d91";
+                    //$("#spin").removeClass("active");
+                    //$("#result-modal-body").text(resp);
                 }
             });
             $("#result-modal").modal("open");
