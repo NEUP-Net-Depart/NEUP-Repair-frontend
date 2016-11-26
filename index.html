@@ -74,7 +74,7 @@
                             <i class="material-icons prefix">settings</i>
                             <select id="service_type" required>
                                 <option value="none" disabled selected>请选择服务类型</option>
-                                <option value="os_inst"系统</option>
+                                <option value="os_inst">安装系统</option>
                                 <option value="software_inst">软件安装</option>
                                 <option value="hardware_fix">配件更换</option>
                                 <option value="cleanup">清灰</option>
@@ -82,8 +82,9 @@
                                 <option value="others">其他</option>
                             </select>
                         </div>
-                        <div class="input-field col s3 m3 l3">请选择预约日期(仅限本周)</div>
-                        <div class="input-field col s3 m3 l3">
+                        <div class="input-field col s3 m3 l3">请选择预约日期(自动选择仍可预约的最近的日期)</div>
+                        <div class="input-field col s3 m3 l3 white-text">
+                            <!--
                             <div class="switch">
                                 <label class="white-text">
                                     周二
@@ -92,6 +93,10 @@
                                     周五
                                 </label>
                             </div>
+                            -->
+                            <input type="radio" name="date" value="tue" id="tue" checked/><label for="tue" class="white-text">星期二</label>
+                            <!-- label for is a must to active the radio button-->
+                            <input type="radio" name="date" value="fri" id="fri" checked/><label for="fri" class="white-text">星期五</label>
                         </div>
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">mode_edit</i>
@@ -186,6 +191,10 @@
 
         $("#skipAnime").click(function() {
             skip();
+            /* Introduction is not useful to him, lead him to form*/
+            $("html, body").animate({
+                scrollTop: $("#hidden-table").offset().top
+            }, 1000);
         });
 
         $("#submit").click(function() {
