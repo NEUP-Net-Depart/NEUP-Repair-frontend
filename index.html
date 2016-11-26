@@ -120,6 +120,7 @@
             $('#comment').val();
             $('#comment').trigger();
         });
+        $("#hidden-table").hide();
         var percent = 0;
         function percentageGrow() {
             if(percent >= 100) {
@@ -138,6 +139,7 @@
             }
         }
         $("#do-it-now").click(function () {
+            $("#hidden-table").show();
             $("html, body").animate({
                 scrollTop: $("#hidden-table").offset().top
             }, 2000);

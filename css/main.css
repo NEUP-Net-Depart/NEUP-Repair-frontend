@@ -28,8 +28,8 @@
 
 .intro {
     z-index: 1;
-    color: transparent;
-    visibility: hidden;
+    opacity: 0;
+    color: white;
 }
 
 .intro-button {
@@ -37,9 +37,9 @@
 }
 
 .intro-button-show.intro-button {
-    -webkit-animation: intro-show-anime 3s forwards;
-    -o-animation: intro-show-anime 3s forwards;
-    animation: intro-show-anime 3s forwards;
+    -webkit-animation: intro-button-show-anime 3s forwards;
+    -o-animation: intro-button-show-anime 3s forwards;
+    animation: intro-button-show-anime 3s forwards;
     -webkit-animation-delay: 4s;
     -moz-animation-delay:  4s;
     -o-animation-delay:  4s;
@@ -89,24 +89,30 @@
     }
 }
 
-@keyframes intro-show-anime {
+@keyframes intro-button-show-anime {
     0% {
-        color: transparent;
         visibility: hidden;
     }
     100% {
-        color: white;
         visibility: visible;
+    }
+}
+
+@keyframes intro-show-anime {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
 @keyframes blue-screen-anime {
     0% {
-        color: white;
+        opacity: 1;
     }
     100% {
-        background-color: transparent;
-        color: transparent;
+        opacity: 0;
         visibility: hidden;
     }
 }
