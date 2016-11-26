@@ -14,24 +14,23 @@
     <div class="blue no-pad-bot no-pad-top">
         <br>
         <br>
-        <br>
-        <div class="container blue no-pad no-margin anime-1">
+        <div class="container blue">
             <br>
             <br>
             <!-- anime-before -->
-            <div class="blue-screen row" id="blue-screen">
+            <div class="blue-screen container row" id="blue-screen">
+                <div>
                 <!--div class="big-font align-left col s12 m12 l12 auto-size-font"-->
-                    <div class="big-font align-left">
-                    <h1 class="">:(</h1>
+                    <h1>:(</h1>
                     <h4 class="">
-                    你的电脑遇到问题，需要重新启动。<br>
-                    我们只收集某些错误信息然后为你重新启动。(完成 <span id="percentage">0</span>%)
+                        你的电脑遇到问题，需要重新启动。<br>
+                        我们只收集某些错误信息然后为你重新启动。<br>(完成 <span id="percentage">0</span>%)
                     </h4>
                     <br>
                 </div>
             </div>
             <!-- anime-after -->
-            <div class="intro" id="intro">
+            <div class="intro container" id="intro">
                 <div class="row">
                     <h2 class="no-pad no-margin center">先锋网络中心 硬件维修报名</h2>
                     <br>
@@ -60,26 +59,26 @@
                 <h4 class="col white-text big-font text-center">填写表格进行报名哦</h4>
             </div>
             <div class="row white-text">
-                <form class="col s12 m12 l12">
+                <form class="col s12 m12 l12" method="POST">
                     <div class="row">
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">account_circle</i>
-                            <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate">
+                            <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate" name="name" required>
                         </div>
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">credit_card</i>
-                            <input placeholder="请输入学号" id="stu_id" type="text" class="validate">
+                            <input placeholder="请输入学号" id="stu_id" type="text" class="validate" name="stu_id" required>
                         </div>
                         <div class="input-field col s6 m6 l6">
                             <i class="material-icons prefix">settings</i>
-                            <select>
-                                <option value="" disabled selected>请选择服务类型</option>
-                                <option value="1">装系统</option>
-                                <option value="2">软件安装</option>
-                                <option value="3">配件更换</option>
-                                <option value="4">清灰</option>
-                                <option value="3">数据恢复</option>
-                                <option value="4">其他</option>
+                            <select id="service_type" required>
+                                <option value="none" disabled selected>请选择服务类型</option>
+                                <option value="os_inst"系统</option>
+                                <option value="software_inst">软件安装</option>
+                                <option value="hardware_fix">配件更换</option>
+                                <option value="cleanup">清灰</option>
+                                <option value="data_recover">数据恢复</option>
+                                <option value="others">其他</option>
                             </select>
                         </div>
                         <div class="input-field col s3 m3 l3">请选择预约日期(仅限本周)</div>
@@ -95,14 +94,51 @@
                         </div>
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">mode_edit</i>
-                            <textarea placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment"></textarea>
+                            <textarea name="comment" placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment" required></textarea>
                             <label for="comment" class="white-text"></label>
                         </div>
-                        <div class="input-field col">
-                            <div class="btn blue waves-effect btn-large">现在报名</div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn blue waves-effect btn-large" id="submit">现在报名</button>
+                            </div>
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <footer class="page-footer light-green">
+            <div class="container">
+            </div>
+            <div class="footer-copyright no-margin no-pad">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s7 m7 l7 truncate">先锋网络中心对此活动持有最终解释权</div>
+                        <div class="col s5 m5 l5 right-align">By <a href="http://blog.neupioneer.com:8111">NEUP-Net-Depart</a></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="modal" id="result-modal">
+        <div class="modal-content">
+            <h3>申请状态</h3>
+            <!-- Add a spinner -->
+            <div class="preloader-wrapper big center active" id="spin">
+                <div class="spinner-layer spinner-blue spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="result-modal-body">
+
             </div>
         </div>
     </div>
@@ -112,15 +148,15 @@
             $("#blue-screen").addClass("blue-vanish");
             $("#intro").addClass("intro-show");
             $("#intro-button").addClass("intro-button-show");
-            $("#hidden-table").addClass("hidden-table-show");
+            $("#hidden-table").addClass("hidden-table-show").show();
         }
-        //debug();
         $(document).ready(function() {
             $('select').material_select();
-            $('#comment').val();
-            $('#comment').trigger();
+            //$('#comment').trigger();
+            $('.modal').modal();
         });
         $("#hidden-table").hide();
+        debug();
         var percent = 0;
         function percentageGrow() {
             if(percent >= 100) {
@@ -138,6 +174,7 @@
                 return;
             }
         }
+
         $("#do-it-now").click(function () {
             $("#hidden-table").show();
             $("html, body").animate({
@@ -145,6 +182,48 @@
             }, 2000);
             $("#hidden-table").addClass("hidden-table-show");
         });
+
+        $("#submit").click(function() {
+            jsonObj = JSON.stringify($('form').serializeObject());
+            console.log(jsonObj);
+            for(var k = 0; k < 100000000; k++) {
+            }
+            $.ajax({
+                url: ".",
+                data: jsonObj,
+                method: "POST",
+                async: true,
+                success: function (resp) {
+                    resp = "申请成功~ 您的邀请码为: 0b4baeed4ba36c95f6f25cbf57048d91";
+                    $("#spin").removeClass("active");
+                    $("#result-modal-body").text(resp);
+                }
+            });
+            $("#result-modal").modal("open");
+            return false;
+            // Active Modal
+        });
+
+        /* Use for convert form to JSON */
+        $.fn.serializeObject = function()
+        {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            /* Add Service Type */
+            o['service_type'] = $("#service_type").val();
+            o['date'] = $("#date").val();
+            return o;
+        };
         flag = setInterval(percentageGrow, 50)
     </script>
 </body>
