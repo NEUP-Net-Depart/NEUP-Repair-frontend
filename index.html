@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>先锋网络中心硬件维修报名</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
+    <link href="//cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <div class="blue no-pad-bot no-pad-top">
+        <br>
+        <br>
+        <br>
+        <div class="container blue no-pad no-margin anime-1">
+            <br>
+            <br>
+            <!-- anime-before -->
+            <div class="blue-screen row" id="blue-screen">
+                <!--div class="big-font align-left col s12 m12 l12 auto-size-font"-->
+                    <div class="big-font align-left">
+                    <h1 class="">:(</h1>
+                    <h4 class="">
+                    你的电脑遇到问题，需要重新启动。<br>
+                    我们只收集某些错误信息然后为你重新启动。(完成 <span id="percentage">0</span>%)
+                    </h4>
+                    <br>
+                </div>
+            </div>
+            <!-- anime-after -->
+            <div class="intro" id="intro">
+                <div class="row">
+                    <h2 class="no-pad no-margin center">先锋网络中心 硬件维修报名</h2>
+                    <br>
+                    <h4 class="no-pad no-margin center">NEUPioneer Computer Maintainence</h4>
+                </div>
+                <div class="row">
+                    <h5 class="center truncate">先锋网络中心硬件维修服务开始于2004年</h5>
+                    <br>
+                    <div class="row center intro-button" id="intro-button">
+                        <a class="btn light-blue">了解更多</a>
+                        <a class="btn orange" id="do-it-now">立即报名</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="section light-green no-pad-bot no-pad-top hidden-table" id="hidden-table">
+        <div class="container no-pad no-margin">
+            <div class="row light-green center auto-size-font">
+                <div class="triangle"></div>
+                <h1 class="col s2 m2 l2 white-text big-font">;)</h1>
+                <h4 class="col white-text big-font text-center">填写表格进行报名哦</h4>
+            </div>
+            <div class="row white-text">
+                <form class="col s12 m12 l12">
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">credit_card</i>
+                            <input placeholder="请输入学号" id="stu_id" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <i class="material-icons prefix">settings</i>
+                            <select>
+                                <option value="" disabled selected>请选择服务类型</option>
+                                <option value="1">装系统</option>
+                                <option value="2">软件安装</option>
+                                <option value="3">配件更换</option>
+                                <option value="4">清灰</option>
+                                <option value="3">数据恢复</option>
+                                <option value="4">其他</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s3 m3 l3">请选择预约日期(仅限本周)</div>
+                        <div class="input-field col s3 m3 l3">
+                            <div class="switch">
+                                <label class="white-text">
+                                    周二
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    周五
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment"></textarea>
+                            <label for="comment" class="white-text"></label>
+                        </div>
+                        <div class="input-field col">
+                            <div class="btn blue waves-effect btn-large">现在报名</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function debug() {
+           // Disable all anime
+            $("#blue-screen").addClass("blue-vanish");
+            $("#intro").addClass("intro-show");
+            $("#intro-button").addClass("intro-button-show");
+            $("#hidden-table").addClass("hidden-table-show");
+        }
+        //debug();
+        $(document).ready(function() {
+            $('select').material_select();
+            $('#comment').val();
+            $('#comment').trigger();
+        });
+        var percent = 0;
+        function percentageGrow() {
+            if(percent >= 100) {
+                percent = 100;
+                clearInterval(flag);
+                $("#percentage").text(percent);
+                $("#blue-screen").addClass("blue-vanish");
+                $("#intro").addClass("intro-show");
+                $("#intro-button").addClass("intro-button-show");
+                return;
+            }
+            if(percent < 100) {
+                percent = percent + Math.floor(Math.random() * 100000 % 5);
+                $("#percentage").text(percent);
+                return;
+            }
+        }
+        $("#do-it-now").click(function () {
+            $("html, body").animate({
+                scrollTop: $("#hidden-table").offset().top
+            }, 2000);
+            $("#hidden-table").addClass("hidden-table-show");
+        });
+        flag = setInterval(percentageGrow, 50)
+    </script>
+</body>
+</html>

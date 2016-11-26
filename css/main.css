@@ -1,0 +1,151 @@
+.bottom-part {
+    background-color: #1DB04C;
+    /* margin-top: 0; */
+    /* margin-bottom: 0; */
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.no-margin {
+    /* background-color: #00A2E9; */
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #2196F3;
+    margin: auto;
+}
+
+.intro {
+    z-index: 1;
+    color: transparent;
+    visibility: hidden;
+}
+
+.intro-button {
+    visibility: hidden;
+}
+
+.intro-button-show.intro-button {
+    -webkit-animation: intro-show-anime 3s forwards;
+    -o-animation: intro-show-anime 3s forwards;
+    animation: intro-show-anime 3s forwards;
+    -webkit-animation-delay: 4s;
+    -moz-animation-delay:  4s;
+    -o-animation-delay:  4s;
+    animation-delay:  4s;
+}
+
+.intro-show.intro {
+    -webkit-animation: intro-show-anime 3s forwards;
+    -o-animation: intro-show-anime 3s forwards;
+    animation: intro-show-anime 3s forwards;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay:  3s;
+    -o-animation-delay:  3s;
+    animation-delay:  3s;
+}
+
+.blue-screen {
+    z-index: 2;
+    position:absolute;
+    background-color: #2196F3;
+    color: white;
+}
+
+.blue-vanish.blue-screen {
+    -webkit-animation: blue-screen-anime 2s forwards;
+    -o-animation: blue-screen-anime 2s forwards;
+    animation: blue-screen-anime 2s forwards;
+}
+
+.hidden-table {
+    visibility: hidden;
+}
+
+.hidden-table-show.hidden-table {
+    visibility: visible;
+    -webkit-animation: show-table 2s forwards;
+    -o-animation: show-table 2s forwards;
+    animation: show-table 2s forwards;
+}
+
+@keyframes show-table{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes intro-show-anime {
+    0% {
+        color: transparent;
+        visibility: hidden;
+    }
+    100% {
+        color: white;
+        visibility: visible;
+    }
+}
+
+@keyframes blue-screen-anime {
+    0% {
+        color: white;
+    }
+    100% {
+        background-color: transparent;
+        color: transparent;
+        visibility: hidden;
+    }
+}
+/*
+.triangle:hover {
+    -webkit-animation:color-effect 3s forwards;
+    -o-animation: color-effect 3s forwards;
+    animation: color-effect 3s forwards;
+
+}
+
+@keyframes color-effect {
+    0% {
+        border-top:50px solid #2196F3;
+    }
+    100% {
+        border-top:55px solid #2155FF;
+    }
+}
+*/
+
+
+@media all and (min-width: 50px)   {  .auto-size-font  { font-size:0.1em;  } }
+@media all and (min-width: 100px)  {  .auto-size-font  { font-size:0.2em;  } }
+@media all and (min-width: 200px)  {  .auto-size-font  { font-size:0.4em;  } }
+@media all and (min-width: 300px)  {  .auto-size-font  { font-size:0.6em;  } }
+@media all and (min-width: 400px)  {  .auto-size-font  { font-size:0.8em;  } }
+@media all and (min-width: 500px)  {  .auto-size-font  { font-size:1.0em;  } }
+@media all and (min-width: 600px)  {  .auto-size-font  { font-size:1.2em;  } }
+@media all and (min-width: 700px)  {  .auto-size-font  { font-size:1.4em;  } }
+@media all and (min-width: 800px)  {  .auto-size-font  { font-size:1.6em;  } }
+@media all and (min-width: 900px)  {  .auto-size-font  { font-size:1.8em;  } }
+@media all and (min-width: 1000px) {  .auto-size-font  { font-size:2.0em;  } }
+@media all and (min-width: 1100px) {  .auto-size-font  { font-size:2.2em;  } }
+@media all and (min-width: 1200px) {  .auto-size-font  { font-size:2.4em;  } }
+@media all and (min-width: 1300px) {  .auto-size-font  { font-size:2.6em;  } }
+@media all and (min-width: 1400px) {  .auto-size-font  { font-size:2.8em;  } }
+@media all and (min-width: 1500px) {  .auto-size-font  { font-size:3.0em;  } }
+@media all and (min-width: 1500px) {  .auto-size-font  { font-size:3.2em;  } }
+@media all and (min-width: 1600px) {  .auto-size-font  { font-size:3.4em;  } }
+@media all and (min-width: 1700px) {  .auto-size-font  { font-size:3.6em;  } }
+
