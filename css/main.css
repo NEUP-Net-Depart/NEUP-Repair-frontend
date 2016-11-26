@@ -79,6 +79,24 @@
     -o-animation: show-table 2s forwards;
     animation: show-table 2s forwards;
 }
+/* -o* -webkit* are needed for browser compatibility */
+@-o-keyframes show-table{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes show-table{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 @keyframes show-table{
     0% {
@@ -86,6 +104,24 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@-o-keyframes intro-button-show-anime {
+    0% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+@-webkit-keyframes intro-button-show-anime {
+    0% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
     }
 }
 
@@ -107,7 +143,45 @@
     }
 }
 
+@-webkit-keyframes intro-show-anime {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes intro-show-anime {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 @keyframes blue-screen-anime {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blue-screen-anime {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-o-keyframes blue-screen-anime {
     0% {
         opacity: 1;
     }
