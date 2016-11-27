@@ -2,6 +2,8 @@
  * Created by VOID001 on 27/11/2016.
  *
  */
+
+var host = "http://127.0.0.1:8080";
 function skip() {
     // Disable all anime
     $("#blue-screen").addClass("blue-vanish");
@@ -68,7 +70,7 @@ $('#agreement').click(function() {
 });
 
 $('#agree').click(function() {
-    $('#agreement').attr("checked", "checked");
+    $('#agreement').prop("checked", "checked");
 });
 
 function validate(obj) {
@@ -98,17 +100,20 @@ function validate(obj) {
 
 $("#submit").click(function() {
     jsonObj = JSON.stringify($('form').serializeObject());
-    if(!validate(jsonObj)) return false;
-    console.log(jsonObj);
+    //if(!validate(jsonObj)) return false;
     $.ajax({
-        url: ".",
+        url: host + "/api/v1/orders",
         data: jsonObj,
         method: "POST",
         async: true,
         success: function (resp) {
-            resp = jsonObj;
-            //$("#spin").removeClass("active");
-            $("#result-modal-body").text(resp);
+            console.log(resp);
+            $("#spin").removeClass("active");
+            img = new Image();
+            img.src = 'data:image/png;base64,' + resp["qrcode"];
+            $("#result-modal-qrcode").html(img);
+            $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=/order/"+ resp['secret_id'] +">复制此链接 </a>");
+            $('#submit').hide();
         }
     });
     $("#result-modal").modal("open");
@@ -131,7 +136,6 @@ $.fn.serializeObject = function()
 {
     var o = {};
     var a = this.serializeArray();
-    console.log(a);
     $.each(a, function() {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
@@ -147,4 +151,4 @@ $.fn.serializeObject = function()
     o['date'] = date;
     return o;
 };
-flag = setInterval(percentageGrow, 50)
+flag = setInterval(percentageGrow, 50);
