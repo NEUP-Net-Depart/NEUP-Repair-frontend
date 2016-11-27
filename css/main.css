@@ -4,6 +4,10 @@
     /* margin-bottom: 0; */
 }
 
+.agreement ol { counter-reset: item }
+.agreement li { display: block }
+.agreement li:before { content: counters(item, ".") " "; counter-increment: item }
+
 .title {
     margin-top: 0;
     margin-bottom: 0;
@@ -15,6 +19,10 @@
     /* background-color: #00A2E9; */
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.cursor-hand {
+    cursor: pointer;
 }
 
 .triangle {

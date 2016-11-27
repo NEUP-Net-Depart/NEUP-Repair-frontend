@@ -11,6 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+    <nav class="blue">
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="right hide-on-med-and-down button-collapse">
+                <li><a href="#">维修记录</a></li>
+                <li><a href="#">工作人员入口</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="blue no-pad-bot no-pad-top">
         <br>
         <br>
@@ -84,29 +92,23 @@
                         </div>
                         <div class="input-field col s3 m3 l3">请选择预约日期(自动选择仍可预约的最近的日期)</div>
                         <div class="input-field col s3 m3 l3 white-text">
-                            <!--
-                            <div class="switch">
-                                <label class="white-text">
-                                    周二
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                    周五
-                                </label>
-                            </div>
-                            -->
-                            <input type="radio" name="date" value="tue" id="tue" checked/><label for="tue" class="white-text">星期二</label>
+                            <input type="radio" name="date" value="tue" id="tue"/><label for="tue" class="white-text">星期二</label>
                             <!-- label for is a must to active the radio button-->
-                            <input type="radio" name="date" value="fri" id="fri" checked/><label for="fri" class="white-text">星期五</label>
+                            <input type="radio" name="date" value="fri" id="fri"/><label for="fri" class="white-text">星期五</label>
                         </div>
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">mode_edit</i>
                             <textarea name="comment" placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment" required></textarea>
                             <label for="comment" class="white-text"></label>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <button class="btn blue waves-effect btn-large" id="submit">现在报名</button>
-                            </div>
+                        <div class="col">
+                            <input name="agreement" id="agreement" class="read-first" type="checkbox" />
+                            <label class="white-text" for="agreement">我同意</label><a id="show-agreement" class="cursor-hand">《免责声明》</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn blue waves-effect btn-large" id="submit">现在报名</button>
                         </div>
                     </div>
                 </form>
@@ -120,7 +122,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s7 m7 l7 truncate">先锋网络中心对此活动持有最终解释权</div>
-                        <div class="col s5 m5 l5 right-align">By <a href="http://blog.neupioneer.com:8111">NEUP-Net-Depart</a></div>
+                        <div class="col s5 m5 l5 right-align disabled">By <a href="http://blog.neupioneer.com:8111">NEUP-Net-Depart</a></div>
                     </div>
                 </div>
             </div>
@@ -148,9 +150,34 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="agreement-modal">
+        <div class="modal-content agreement">
+            <h3>免责声明</h3>
+            <div>
+                <p>
+                    为向东北大学师生更好地提供计算机维修服务，避免不必要的纠纷以及财产损失，先锋网硬件部部现声明如下：
+                </p>
+                <ol>
+                    <li>
+                        对于存在以下情况的单位或个人，硬件部有权拒绝为其提供维修服务或中止维修服务：
+                        <ol>
+                            <li>其故障设备的维修难度过大、技术过于复杂，维修成功率过低的</li>
+                            <li>其故障设备的维修成本过高，甚至高于重新购置设备的</li>
+                            <li>其设备存在不可逆损坏或运用现有技术无法修复的</li>
+                            <li>其故障设备过于贵重的</li>
+                            <li>提出维修申请的单位或个人维修要求过与严苛或拒绝配合维修，态度恶劣、难以与其沟通的</li>
+                        </ol>
+                    </li>
+                    <li>设备维修过程中需要更换、添加的配件以及消耗的备品需维修申请人自行准备，硬件部无义务提供购买建议</li>
+                    <li>对于维修过程中可能出现的设备损坏，硬件部不承担任何责任。</li>
+                </ol>
+                该声明须在维修人维修电脑前当场签字同意，其最终解释权归先锋网硬件部所有。
+            </div>
+        </div>
+    </div>
     <script>
         function skip() {
-           // Disable all anime
+            // Disable all anime
             $("#blue-screen").addClass("blue-vanish");
             $("#intro").addClass("intro-show");
             $("#intro-button").addClass("intro-button-show");
@@ -189,12 +216,24 @@
             $("#hidden-table").addClass("hidden-table-show");
         });
 
+        $("#show-agreement").click(function() {
+            $("#agreement-modal").modal('open');
+            $("#agreement").removeClass("read-first");
+        });
+
         $("#skipAnime").click(function() {
             skip();
             /* Introduction is not useful to him, lead him to form*/
             $("html, body").animate({
                 scrollTop: $("#hidden-table").offset().top
             }, 1000);
+        });
+
+        $('#agreement').click(function() {
+            if($('#agreement').hasClass("read-first")) {
+                Materialize.toast("请先阅读《免责声明》", 2000);
+                return false;
+            }
         });
 
         $("#submit").click(function() {
@@ -206,9 +245,9 @@
                 method: "POST",
                 async: true,
                 success: function (resp) {
-                    //resp = "申请成功~ 您的邀请码为: 0b4baeed4ba36c95f6f25cbf57048d91";
+                    resp = jsonObj;
                     //$("#spin").removeClass("active");
-                    //$("#result-modal-body").text(resp);
+                    $("#result-modal-body").text(resp);
                 }
             });
             $("#result-modal").modal("open");
@@ -216,11 +255,22 @@
             // Active Modal
         });
 
+        var date = "";
+
+        $("#fri").click(function() {
+            date = "fri";
+        });
+
+        $("#tue").click(function() {
+            date = "tue";
+        });
+
         /* Use for convert form to JSON */
         $.fn.serializeObject = function()
         {
             var o = {};
             var a = this.serializeArray();
+            console.log(a);
             $.each(a, function() {
                 if (o[this.name] !== undefined) {
                     if (!o[this.name].push) {
@@ -233,7 +283,7 @@
             });
             /* Add Service Type */
             o['service_type'] = $("#service_type").val();
-            o['date'] = $("#date").val();
+            o['date'] = date;
             return o;
         };
         flag = setInterval(percentageGrow, 50)
