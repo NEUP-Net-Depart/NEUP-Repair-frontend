@@ -113,7 +113,7 @@ $("#submit").click(function() {
                 img = new Image();
                 img.src = 'data:image/png;base64,' + resp["qrcode"];
                 $("#result-modal-qrcode").html(img);
-                $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=/order.html?secret=" + resp['secret_id'] + ">复制此链接 </a>");
+                $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=order.html?secret=" + resp['secret_id'] + ">复制此链接 </a>");
             }
             else {
                 $("#spin").removeClass("active");
