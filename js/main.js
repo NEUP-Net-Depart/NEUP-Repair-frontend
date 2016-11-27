@@ -3,6 +3,10 @@
  *
  */
 
+function changeNavColor () {
+    $('#nav').addClass("light-green");
+}
+
 function skip() {
     // Disable all anime
     $("#blue-screen").addClass("blue-vanish");
@@ -10,11 +14,19 @@ function skip() {
     $("#intro-button").addClass("intro-button-show");
     $("#hidden-table").addClass("hidden-table-show").show();
 }
+
 $(document).ready(function() {
     $('select').material_select();
-    //$('#comment').trigger();
     $('.modal').modal();
+    $('.button-collapse').sideNav({
+            menuWidth: 300, // Default is 240
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true // Choose whether you can drag to open on touch screens
+        }
+    );
 });
+
 $("#hidden-table").hide();
 //debug();
 var percent = 0;
@@ -39,6 +51,8 @@ function percentageGrow() {
 }
 
 $("#do-it-now").click(function () {
+    $(".full-height").addClass('full-height-anime');
+    $(".full-height").removeClass('full-height');
     $("#hidden-table").show();
     $("html, body").animate({
         scrollTop: $("#hidden-table").offset().top

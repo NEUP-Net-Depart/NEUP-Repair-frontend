@@ -13,15 +13,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <nav class="blue">
-        <div class="nav-wrapper">
-            <ul id="nav-mobile" class="right hide-on-med-and-down button-collapse">
-                <li><a href="#">维修记录</a></li>
-                <li><a href="#">工作人员入口</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="blue no-pad-bot no-pad-top">
+    <div class="navbar-fixed">
+        <nav class="blue z-depth-0" id="nav">
+            <div class="nav-wrapper">
+                <a href="#!" id="sidebar-show" data-activates="mobile-bar" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down button-collapse">
+                    <li><a href="#">维修记录</a></li>
+                    <li><a href="#">工作人员入口</a></li>
+                </ul>
+            </div>
+            <div class="triangle no-pad no-margin"></div>
+        </nav>
+    </div>
+    <!--
+    sidebar should not nested in navbar, it will have a higher shadow
+    and won't work correctly
+    -->
+    <ul class="side-nav blue" id="mobile-bar">
+        <li>
+            <div class="section white-text darken-2 blue center-align">
+                <img class="circle responsive-img" src="logo.png" width="20%"/>
+                <div>先锋网络中心硬件维修</div>
+            </div>
+        </li>
+        <li><br></li>
+        <li><a class="white-text waves-effect" href="#">维修记录</a></li>
+        <li><a class="white-text waves-effect" href="#">工作人员入口</a></li>
+    </ul>
+    <div class="blue no-pad-bot no-pad-top full-height">
         <br>
         <br>
         <div class="container blue">
@@ -48,7 +67,7 @@
                     <h4 class="no-pad no-margin center">NEUPioneer Computer Maintenance</h4>
                 </div>
                 <div class="row">
-                    <h5 class="center truncate">免费 专业 始于2004</h5>
+                    <h5 class="center truncate">专业 免费 始于2004</h5>
                     <br>
                     <div class="row center intro-button" id="intro-button">
                         <a class="btn light-blue waves-effect">了解更多</a>
@@ -62,7 +81,7 @@
         <br>
         <br>
     </div>
-    <div class="section light-green no-pad-bot no-pad-top hidden-table" id="hidden-table">
+    <div class="light-green no-pad-bot no-pad-top hidden-table" id="hidden-table">
         <div class="container no-pad no-margin">
             <div class="row light-green center auto-size-font">
                 <div class="triangle"></div>
@@ -158,7 +177,7 @@
             <h3>免责声明</h3>
             <div class="row">
                 <p>
-                    为向东北大学师生更好地提供计算机维修服务，避免不必要的纠纷以及财产损失，先锋网硬件部部现声明如下：
+                    为向东北大学师生更好地提供计算机维修服务，避免不必要的纠纷以及财产损失，先锋网硬件部现声明如下：
                 </p>
                 <ol>
                     <li>

@@ -41,17 +41,57 @@
 }
 
 .intro-button {
-    visibility: hidden;
+    opacity: 0;
 }
+
+/* Cannot hanlde the animation now
+.full-height{
+    padding-bottom: 5.0em;
+}
+
+.full-height-anime {
+    position: relative;
+    -webkit-animation: full-height-shrink 3s forwards;
+    -o-animation: full-height-shrink 3s forwards;
+    animation: full-height-shrink 3s forwards;
+}
+
+@-webkit-keyframes full-height-shrink {
+    0% {
+        padding-bottom: 5.0em;
+    }
+    50% {
+        padding-bottom: 1.0em;
+    }
+    100% {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+@keyframes full-height-shrink {
+    0% {
+        padding-bottom: 5.0em;
+    }
+    50% {
+        padding-top: 1.0em;
+        padding-bottom: 1.0em;
+    }
+    100% {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+*/
 
 .intro-button-show.intro-button {
     -webkit-animation: intro-button-show-anime 3s forwards;
     -o-animation: intro-button-show-anime 3s forwards;
     animation: intro-button-show-anime 3s forwards;
-    -webkit-animation-delay: 4s;
-    -moz-animation-delay:  4s;
-    -o-animation-delay:  4s;
-    animation-delay:  4s;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay:  3s;
+    -o-animation-delay:  3s;
+    animation-delay:  3s;
 }
 
 .intro-show.intro {
@@ -130,19 +170,19 @@
 
 @-webkit-keyframes intro-button-show-anime {
     0% {
-        visibility: hidden;
+        opacity: 0;
     }
     100% {
-        visibility: visible;
+        opacity: 1;
     }
 }
 
 @keyframes intro-button-show-anime {
     0% {
-        visibility: hidden;
+        opacity: 0;
     }
     100% {
-        visibility: visible;
+        opacity: 1;
     }
 }
 
