@@ -34,6 +34,12 @@
     margin: auto;
 }
 
+.triangle.change-color {
+    -webkit-animation: triangle-change-color 1s forwards;
+    -o-animation: triangle-change-color 1s forwards;
+    animation: triangle-change-color 1s forwards;
+}
+
 .intro {
     z-index: 1;
     opacity: 0;
@@ -87,6 +93,13 @@
     -o-animation: show-table 1s forwards;
     animation: show-table 1s forwards;
 }
+
+.promote-show.promote {
+    -webkit-animation: show-prom 1s forwards;
+    -o-animation: show-prom 1s forwards;
+    animation: show-prom 1s forwards;
+}
+
 /* -o* -webkit* are needed for browser compatibility */
 @-o-keyframes show-table{
     0% {
@@ -115,6 +128,45 @@
     100% {
 		margin-top: 0;
         opacity: 1;
+    }
+}
+
+@-o-keyframes show-prom {
+    0% {
+        opacity: 0;
+        margin-top: -20px;
+        padding-bottom: 20px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+@-webkit-keyframes show-prom {
+    0% {
+        opacity: 0;
+        margin-top: -20px;
+        padding-bottom: 20px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+@keyframes show-prom {
+    0% {
+        opacity: 0;
+        margin-top: -20px;
+        padding-bottom: 20px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+        padding-bottom: 0px;
     }
 }
 
@@ -214,6 +266,15 @@
         opacity: 0;
 		margin-top: 20;
         visibility: hidden;
+    }
+}
+
+@keyframes triangle-change-color {
+    0% {
+        border-top: 20px solid #2196F3;
+    }
+    100% {
+        border-top: 20px solid #8bc34a;
     }
 }
 /*

@@ -10,6 +10,7 @@ function skip() {
     $("#intro").addClass("intro-show");
     $("#intro-button").addClass("intro-button-show");
     $("#hidden-table").addClass("hidden-table-show").show();
+    $("#tri").addClass("change-color");
 }
 $(document).ready(function() {
     $('select').material_select();
@@ -44,6 +45,7 @@ $("#do-it-now").click(function () {
 	$("#hidden-table").css("margin-top", -1 * h);
     $("#hidden-table").show();
 	$("#hidden-table").addClass("hidden-table-show");
+    $("#tri").addClass("change-color");
 	$("html, body").animate({
         scrollTop: $("#blue-area").prop("offsetTop") + $("#blue-area").height()
 	}, 1250);
