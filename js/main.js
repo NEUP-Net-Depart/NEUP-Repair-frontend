@@ -68,7 +68,7 @@ $('#agreement').click(function() {
 });
 
 $('#agree').click(function() {
-    $('#agreement').attr("checked", "checked");
+    $('#agreement').prop("checked", "checked");
 });
 
 function validate(obj) {
