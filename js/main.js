@@ -3,7 +3,6 @@
  *
  */
 
-var host = "http://127.0.0.1:8080";
 function skip() {
     // Disable all anime
     $("#blue-screen").addClass("blue-vanish");
@@ -100,7 +99,7 @@ function validate(obj) {
 
 $("#submit").click(function() {
     jsonObj = JSON.stringify($('form').serializeObject());
-    //if(!validate(jsonObj)) return false;
+    if(!validate(jsonObj)) return false;
     $.ajax({
         url: host + "/api/v1/orders",
         data: jsonObj,
@@ -108,12 +107,19 @@ $("#submit").click(function() {
         async: true,
         success: function (resp) {
             console.log(resp);
-            $("#spin").removeClass("active");
-            img = new Image();
-            img.src = 'data:image/png;base64,' + resp["qrcode"];
-            $("#result-modal-qrcode").html(img);
-            $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=/order/"+ resp['secret_id'] +">复制此链接 </a>");
-            $('#submit').hide();
+            if(resp['success'] == true) {
+                resp = resp["data"]
+                $("#spin").removeClass("active");
+                img = new Image();
+                img.src = 'data:image/png;base64,' + resp["qrcode"];
+                $("#result-modal-qrcode").html(img);
+                $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=/order.html?secret=" + resp['secret_id'] + ">复制此链接 </a>");
+            }
+            else {
+                $("#spin").removeClass("active");
+                Materialize.toast(resp['msg'], 5000, "red")
+            }
+            //$('#submit').hide();
         }
     });
     $("#result-modal").modal("open");
