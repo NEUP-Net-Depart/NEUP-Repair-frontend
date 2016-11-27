@@ -29,6 +29,9 @@ function percentageGrow() {
     }
     if(percent < 100) {
         percent = percent + Math.floor(Math.random() * 100000 % 5);
+        if(percent > 100) {
+            percent = 100;
+        }
         $("#percentage").text(percent);
         return;
     }
@@ -45,6 +48,7 @@ $("#do-it-now").click(function () {
 $("#show-agreement").click(function() {
     $("#agreement-modal").modal('open');
     $("#agreement").removeClass("read-first");
+    $('.tooltipped').tooltip('remove');
 });
 
 $("#skipAnime").click(function() {
@@ -60,14 +64,41 @@ $('#agreement').click(function() {
         Materialize.toast("请先阅读《免责声明》", 2000);
         return false;
     }
+    return true;
 });
 
 $('#agree').click(function() {
     $('#agreement').attr("checked", "checked");
 });
 
+function validate(obj) {
+    obj = $.parseJSON(obj);
+    if(obj["name"] == ""){
+        Materialize.toast("请输入姓名", 2000, "red");
+        return false
+    }
+    if(obj["stu_id"] == "" || isNaN(obj["stu_id"])) {
+        Materialize.toast("请输入正确的学号", 2000, "red");
+        return false
+    }
+    if(obj["service_type"] == undefined) {
+        Materialize.toast("请选择服务类型", 2000, "red");
+        return false
+    }
+    if(obj["date"] == undefined) {
+        Materialize.toast("请选择日期", 2000, "red");
+        return false
+    }
+    if(obj["agreement"] == undefined) {
+        Materialize.toast("请同意许可协议", 2000, "red");
+        return false
+    }
+    return true;
+}
+
 $("#submit").click(function() {
     jsonObj = JSON.stringify($('form').serializeObject());
+    if(!validate(jsonObj)) return false;
     console.log(jsonObj);
     $.ajax({
         url: ".",
