@@ -38,6 +38,7 @@
     z-index: 1;
     opacity: 0;
     color: white;
+	margin-top: 0;
 }
 
 .intro-button {
@@ -45,23 +46,20 @@
 }
 
 .intro-button-show.intro-button {
-    -webkit-animation: intro-button-show-anime 3s forwards;
-    -o-animation: intro-button-show-anime 3s forwards;
-    animation: intro-button-show-anime 3s forwards;
-    -webkit-animation-delay: 4s;
-    -moz-animation-delay:  4s;
-    -o-animation-delay:  4s;
-    animation-delay:  4s;
+    -webkit-animation: intro-button-show-anime 1s forwards;
+    -o-animation: intro-button-show-anime 1s forwards;
+    animation: intro-button-show-anime 1s forwards;
 }
 
 .intro-show.intro {
-    -webkit-animation: intro-show-anime 3s forwards;
-    -o-animation: intro-show-anime 3s forwards;
-    animation: intro-show-anime 3s forwards;
-    -webkit-animation-delay: 3s;
-    -moz-animation-delay:  3s;
-    -o-animation-delay:  3s;
-    animation-delay:  3s;
+    -webkit-animation: intro-show-anime 1s forwards;
+    -o-animation: intro-show-anime 1s forwards;
+    animation: intro-show-anime 1s forwards;
+}
+
+.blue-bg {
+	position: relative;
+	z-index: 2;
 }
 
 .blue-screen {
@@ -72,20 +70,22 @@
 }
 
 .blue-vanish.blue-screen {
-    -webkit-animation: blue-screen-anime 2s forwards;
-    -o-animation: blue-screen-anime 2s forwards;
-    animation: blue-screen-anime 2s forwards;
+    -webkit-animation: blue-screen-anime 1s forwards;
+    -o-animation: blue-screen-anime 1s forwards;
+    animation: blue-screen-anime 1s forwards;
 }
 
 .hidden-table {
+	z-index: 1;
     visibility: hidden;
+	position: relative;
 }
 
 .hidden-table-show.hidden-table {
     visibility: visible;
-    -webkit-animation: show-table 2s forwards;
-    -o-animation: show-table 2s forwards;
-    animation: show-table 2s forwards;
+    -webkit-animation: show-table 1s forwards;
+    -o-animation: show-table 1s forwards;
+    animation: show-table 1s forwards;
 }
 /* -o* -webkit* are needed for browser compatibility */
 @-o-keyframes show-table{
@@ -93,6 +93,7 @@
         opacity: 0;
     }
     100% {
+		margin-top: 0;
         opacity: 1;
     }
 }
@@ -102,6 +103,7 @@
         opacity: 0;
     }
     100% {
+		margin-top: 0;
         opacity: 1;
     }
 }
@@ -111,6 +113,7 @@
         opacity: 0;
     }
     100% {
+		margin-top: 0;
         opacity: 1;
     }
 }
@@ -145,27 +148,39 @@
 @keyframes intro-show-anime {
     0% {
         opacity: 0;
+		margin-top: -20px;
+		padding-bottom: 20px;
     }
     100% {
         opacity: 1;
+		margin-top: 0px;
+		padding-bottom: 0px;
     }
 }
 
 @-webkit-keyframes intro-show-anime {
     0% {
         opacity: 0;
+		margin-top: -20px;
+		padding-bottom: 20px;
     }
     100% {
         opacity: 1;
+		margin-top: 0px;
+		padding-bottom: 0px;
     }
 }
 
 @-o-keyframes intro-show-anime {
     0% {
         opacity: 0;
+		margin-top: -20px;
+		padding-bottom: 20px;
     }
     100% {
         opacity: 1;
+		margin-top: 0px;
+		padding-bottom: 0px;
     }
 }
 
@@ -175,6 +190,7 @@
     }
     100% {
         opacity: 0;
+		margin-top: 20;
         visibility: hidden;
     }
 }
@@ -185,6 +201,7 @@
     }
     100% {
         opacity: 0;
+		margin-top: 20;
         visibility: hidden;
     }
 }
@@ -195,6 +212,7 @@
     }
     100% {
         opacity: 0;
+		margin-top: 20;
         visibility: hidden;
     }
 }

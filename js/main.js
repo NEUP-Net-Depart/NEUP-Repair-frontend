@@ -38,11 +38,13 @@ function percentageGrow() {
 }
 
 $("#do-it-now").click(function () {
+	var h = $("#hidden-table").height();
+	$("#hidden-table").css("margin-top", -1 * h);
     $("#hidden-table").show();
-    $("html, body").animate({
-        scrollTop: $("#hidden-table").offset().top
-    }, 1000);
-    $("#hidden-table").addClass("hidden-table-show");
+	$("#hidden-table").addClass("hidden-table-show");
+	$("html, body").animate({
+        scrollTop: $("#blue-area").prop("offsetTop") + $("#blue-area").height()
+	}, 1250);
 });
 
 $("#show-agreement").click(function() {
