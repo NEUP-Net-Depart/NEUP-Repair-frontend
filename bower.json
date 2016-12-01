@@ -1,0 +1,26 @@
+{
+  "name": "neup-repair",
+  "description": "NEU Pioneer Repair system Frontend",
+  "main": "index.js",
+  "authors": [
+    "VOID001"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "repair",
+    "school"
+  ],
+  "homepage": "https://github.com/NEUP-Net-Depart/NEUP-Repair",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-ui-router": "ui-router#^0.3.2"
+  }
+}

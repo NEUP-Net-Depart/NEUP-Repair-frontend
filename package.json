@@ -1,0 +1,29 @@
+{
+  "name": "neup-repair",
+  "version": "1.0.0",
+  "description": "NEU Pioneer Repair system Frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./app -a 0.0.0.0 -p 8002 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NEUP-Net-Depart/NEUP-Repair.git"
+  },
+  "keywords": [
+    "repair",
+    "school"
+  ],
+  "author": "VOID001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NEUP-Net-Depart/NEUP-Repair/issues"
+  },
+  "homepage": "https://github.com/NEUP-Net-Depart/NEUP-Repair#readme",
+  "dependencies": {
+    "angular": "^1.5.9",
+    "http-server": "^0.9.0",
+    "ui-router": "^1.0.0-alpha.3"
+  }
+}
