@@ -1,2 +1,4 @@
 
-angular.module('navbar',[]);
+angular.module('navbar',[
+    'ui.router'
+]);

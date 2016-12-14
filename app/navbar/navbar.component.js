@@ -4,8 +4,10 @@ angular.module('navbar')
         controller: [function(){
             var self = this;
             self.active = [];
+            self.css = {};
+            self.css.triangle = "triangle";
             self.items = {
-                repair: {
+                orders: {
                     index: 0,
                     title: "维修记录"
                 },
@@ -13,9 +15,9 @@ angular.module('navbar')
                     index: 1,
                     title: "工作人员入口"
                 },
-                main: {
+                home: {
                     index:2,
-                    title: "主页",
+                    title: "主页"
                 }
             };
             self.setActive = function($param) {
@@ -25,5 +27,5 @@ angular.module('navbar')
                 self.active[$param] = "active";
             }
         }]
-    })
+    });
 

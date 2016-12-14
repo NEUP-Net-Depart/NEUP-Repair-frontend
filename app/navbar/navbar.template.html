@@ -1,12 +1,11 @@
 <div class="navbar-fixed">
     <nav class="blue z-depth-0" id="nav">
         <div class="nav-wrapper">
-            <a href="#!" id="sidebar-show" data-activates="mobile-bar" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down button-collapse">
-                <li ng-repeat="(key, item) in $ctrl.items" class="{{ $ctrl.active[item.index] }}"><a href="#!/{{ key }}" ng-click="$ctrl.setActive(item.index)">{{ item.title }}</a></li>
+            <a data-activates="mobile-bar" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li ng-repeat="(key, item) in $ctrl.items" class="{{ $ctrl.active[item.index] }}"><a ui-sref="{{ key }}" ng-click="$ctrl.setActive(item.index)">{{ item.title }}</a></li>
             </ul>
         </div>
-        <div class="triangle no-pad no-margin"></div>
     </nav>
 </div>
 <!--
@@ -16,11 +15,12 @@ and won't work correctly
 <ul class="side-nav blue" id="mobile-bar">
     <li>
         <div class="section white-text darken-2 blue center-align">
-            <img class="circle responsive-img" src="logo.png" width="20%"/>
+            <img class="circle responsive-img" ng-src="logo.png" width="20%"/>
             <div>先锋网络中心硬件维修</div>
         </div>
     </li>
     <li><br></li>
-    <li><a class="white-text waves-effect" href="#">维修记录</a></li>
-    <li><a class="white-text waves-effect" href="#">工作人员入口</a></li>
+    <li ng-repeat="(key, item) in $ctrl.items" class="$ctrl.active[item.index] }}">
+        <a ui-sref="{{ key }}" ng-click="$ctrl.setActive(item.index)" class="white-text waves-effect">{{ item.title }} </a>
+    </li>
 </ul>
