@@ -68,7 +68,11 @@ angular.module('welcome')
                     scrollTop: $("#hidden-table").offset().top
                 }, 1000);
                 $("#hidden-table").addClass("hidden-table-show");
-            }
+            };
+            
+            self.readMore = function() {
+                $("#more-modal").modal('open');
+            };
     
     
             $("#hidden-table").hide();
