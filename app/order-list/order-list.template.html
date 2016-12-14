@@ -17,14 +17,13 @@
                 <thead class="black-text">
                 <!-- using (k, v) will cause error, maybe the name is taken -->
                 <th ng-repeat="(key, val) in $ctrl.orderData[0]">{{ $ctrl.toHuman[key] }}</th>
-                <th>Operate</th>
+                <th>操作(仅限工作人员)</th>
                 </thead>
                 <tbody>
                 <tr ng-repeat="val in $ctrl.orderData">
                     <td ng-repeat="(itemkey, itemval) in val">{{ itemval }}</td>
                     <td>
                         <button class="btn waves-effect red" ng-click="$ctrl.expireOrder(val.id)">Expire</button>
-                        <button class="btn waves-effect green" ui-sref="order({secretID: val.secret_id})">View</button>
                     </td>
                 </tr>
                 </tbody>

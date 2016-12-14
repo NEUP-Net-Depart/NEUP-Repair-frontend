@@ -8,6 +8,7 @@
         </div>
     </nav>
 </div>
+
 <!--
 sidebar should not nested in navbar, it will have a higher shadow
 and won't work correctly
@@ -20,7 +21,7 @@ and won't work correctly
         </div>
     </li>
     <li><br></li>
-    <li ng-repeat="(key, item) in $ctrl.items" class="$ctrl.active[item.index] }}">
+    <li ng-repeat="(key, item) in $ctrl.items" class="$ctrl.active[item.index]">
         <a ui-sref="{{ key }}" ng-click="$ctrl.setActive(item.index)" class="white-text waves-effect">{{ item.title }} </a>
     </li>
 </ul>
