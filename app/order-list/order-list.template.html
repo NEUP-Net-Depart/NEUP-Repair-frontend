@@ -1,0 +1,33 @@
+<div class="container-main">
+    <div class="row center-align">
+        <h3><i class="fa fa-wrench"></i>维修管理</h3>
+        从该预约系统正式启用后所有的预约维修都显示在下面了哦=￣ω￣=
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <table class="a-depth-3 table-hover">
+                <thead class="black-text">
+                <!-- using (k, v) will cause error, maybe the name is taken -->
+                <th ng-repeat="(key, val) in $ctrl.orderData[0]">{{ $ctrl.toHuman[key] }}</th>
+                <th>Operate</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="val in $ctrl.orderData">
+                    <td ng-repeat="(itemkey, itemval) in val">{{ itemval }}</td>
+                    <td>
+                        <button class="btn waves-effect red" ng-click="$ctrl.expireOrder(val.id)">Expire</button>
+                        <button class="btn waves-effect green" ui-sref="order({secretID: val.secret_id})">View</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="pagination center-align">
+            <li class="{{ $ctrl.disable_prev }}"><a ui-sref="orders({ page: {{$ctrl.prevPage}} })"><i class="material-icons">chevron_left</i></a></li>
+            <li ng-repeat="i in $ctrl.PageArr" class="{{ i.on }}"><a ui-sref="orders({page: {{i.index}} })">{{ i.index }}</a></li>
+            <li class="{{ $ctrl.disable_next }}"><a ui-sref="orders({ page: {{$ctrl.nextPage}} })"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+    </div>
+</div>

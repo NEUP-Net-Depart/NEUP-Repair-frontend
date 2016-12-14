@@ -1,0 +1,160 @@
+<div class="blue no-pad-bot no-pad-top full-height">
+    <br>
+    <br>
+    <div class="container blue">
+        <br>
+        <br>
+        <!-- anime-before -->
+        <div class="blue-screen container row" id="blue-screen">
+            <div>
+                <!--div class="big-font align-left col s12 m12 l12 auto-size-font"-->
+                <h1>:(</h1>
+                <h4 class="">
+                    你的电脑遇到问题，需要重新启动。<br>
+                    我们只收集某些错误信息然后为你重新启动。<br>(完成 <span id="percentage">0</span>%)
+                </h4>
+                <br>
+            </div>
+            <div class="btn btn-flat white-text" id="skipAnime">跳过动画</div>
+        </div>
+        <!-- anime-after -->
+        <div class="intro container" id="intro">
+            <div class="row">
+                <h2 class="no-pad no-margin center">先锋网络中心 硬件维修报名</h2>
+                <br>
+                <h4 class="no-pad no-margin center">NEUPioneer Computer Maintenance</h4>
+            </div>
+            <div class="row">
+                <h5 class="center truncate">专业 免费 始于2004</h5>
+                <br>
+                <div class="row center intro-button" id="intro-button">
+                    <a class="btn light-blue waves-effect">了解更多</a>
+                    <a class="btn orange waves-effect" id="do-it-now" ng-click="$ctrl.doItNow()">立即报名</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+</div>
+<div class="light-green no-pad-bot no-pad-top hidden-table" id="hidden-table">
+    <div class="container no-pad no-margin">
+        <div class="row light-green center auto-size-font">
+            <div class="triangle"></div>
+            <h1 class="col s2 m2 l2 white-text big-font">;)</h1>
+            <h4 class="col white-text big-font text-center">填写表格进行报名哦</h4>
+        </div>
+        <div class="row white-text">
+            <form class="col s12 m12 l12" method="POST">
+                <div class="row">
+                    <div class="input-field col s12 m12 l12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate" name="name" required>
+                    </div>
+                    <div class="input-field col s12 m12 l12">
+                        <i class="material-icons prefix">credit_card</i>
+                        <input placeholder="请输入学号" id="stu_id" type="text" class="validate" name="stu_id" required>
+                    </div>
+                    <div class="input-field col s6 m6 l6">
+                        <i class="material-icons prefix">settings</i>
+                        <select id="service_type" required>
+                            <option value="none" disabled selected>请选择服务类型</option>
+                            <option value="os_inst">安装系统</option>
+                            <option value="software_inst">软件安装</option>
+                            <option value="hardware_fix">配件更换</option>
+                            <option value="cleanup">清灰</option>
+                            <option value="data_recover">数据恢复</option>
+                            <option value="others">其他</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s3 m3 l3">请选择预约日期(自动选择仍可预约的最近的日期)</div>
+                    <div class="input-field col s3 m3 l3 white-text">
+                        <input type="radio" name="date" value="tue" id="tue"/><label for="tue" class="white-text">星期二</label>
+                        <!-- label for is a must to active the radio button-->
+                        <input type="radio" name="date" value="fri" id="fri"/><label for="fri" class="white-text">星期五</label>
+                    </div>
+                    <div class="input-field col s12 m12 l12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea name="comment" placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment" required></textarea>
+                        <label for="comment" class="white-text"></label>
+                    </div>
+                    <div class="col">
+                        <input name="agreement" id="agreement" class="read-first" type="checkbox" />
+                        <label class="white-text" for="agreement">我同意</label><a id="show-agreement" class="cursor-hand">《免责声明》</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn blue waves-effect btn-large" id="submit">现在报名</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="page-footer light-green">
+        <div class="container">
+        </div>
+        <div class="footer-copyright no-margin no-pad">
+            <div class="container">
+                <div class="row">
+                    <div class="col s7 m7 l7 truncate">先锋网络中心对此活动持有最终解释权</div>
+                    <div class="col s5 m5 l5 right-align disabled">By <a href="http://blog.neupioneer.com:8111">NEUP-Net-Depart</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="modal" id="result-modal">
+    <div class="modal-content no-pad">
+        <h3>申请状态</h3>
+        <!-- Add a spinner -->
+        <div class="preloader-wrapper big center active" id="spin">
+            <div class="spinner-layer spinner-blue spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <div id="result-modal-body" class="container">
+            <div id="result-modal-qrcode" class="center"></div>
+            <div id="result-modal-msg"></div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-fixed-footer" id="agreement-modal">
+    <div class="modal-content agreement">
+        <h3>免责声明</h3>
+        <div class="row">
+            <p>
+                为向东北大学师生更好地提供计算机维修服务，避免不必要的纠纷以及财产损失，先锋网硬件部现声明如下：
+            </p>
+            <ol>
+                <li>
+                    对于存在以下情况的单位或个人，硬件部有权拒绝为其提供维修服务或中止维修服务：
+                    <ol>
+                        <li>其故障设备的维修难度过大、技术过于复杂，维修成功率过低的</li>
+                        <li>其故障设备的维修成本过高，甚至高于重新购置设备的</li>
+                        <li>其设备存在不可逆损坏或运用现有技术无法修复的</li>
+                        <li>其故障设备过于贵重的</li>
+                        <li>提出维修申请的单位或个人维修要求过与严苛或拒绝配合维修，态度恶劣、难以与其沟通的</li>
+                    </ol>
+                </li>
+                <li>设备维修过程中需要更换、添加的配件以及消耗的备品需维修申请人自行准备，硬件部无义务提供购买建议</li>
+                <li>对于维修过程中可能出现的设备损坏，硬件部不承担任何责任。</li>
+            </ol>
+            该声明须在维修人维修电脑前当场签字同意，其最终解释权归先锋网硬件部所有。
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat" id="agree">Agree</a>
+    </div>
+</div>
