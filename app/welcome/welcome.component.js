@@ -8,6 +8,16 @@ angular.module('welcome')
         controller: [function() {
             var self = this;
             
+            //Init Clipboard
+            var clipboard = new Clipboard('#clipboard-btn');
+            clipboard.on('success', function(e) {
+                Materialize.toast("复制成功 " + e.text, 1000, "green");
+                console.log('反正给别人看看又不会怀孕，窝们就不删debug信息咯');
+                console.info('Action:', e.action);
+                console.info('Text:', e.text);
+                console.info('Trigger:', e.trigger);
+            });
+            
             function validate(obj) {
                 obj = $.parseJSON(obj);
                 if(obj["name"] == ""){
@@ -134,7 +144,10 @@ angular.module('welcome')
                             img = new Image();
                             img.src = 'data:image/png;base64,' + resp["qrcode"];
                             $("#result-modal-qrcode").html(img);
-                            $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者<a href=order.html?secret=" + resp['secret_id'] + ">复制此链接 </a>");
+                            $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者复制此秘钥" +
+                                "<input id='secret_id' type='text' value="+ resp['secret_id'] + ">" +
+                                "<button id='clipboard-btn' class='btn waves-effect blue' data-clipboard-target='#secret_id'>点此复制到剪贴板</button>"
+                            );
                         }
                         else {
                             $("#spin").removeClass("active");

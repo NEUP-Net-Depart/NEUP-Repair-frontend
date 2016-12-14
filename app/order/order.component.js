@@ -70,8 +70,9 @@ angular
                     method: "PUT",
                     async: true,
                     success: function (resp) {
+                        console.log(resp);
                         if (!submitted) {
-                            if(resp['success'] = true) {
+                            if(resp['success'] == true) {
                                 $("#submit").text("已结束");
                                 $("#submit").removeClass("yellow");
                                 $("#submit").addClass("green");
