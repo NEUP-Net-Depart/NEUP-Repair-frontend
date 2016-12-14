@@ -1,68 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="max-age=7200"/>
-    <title>先锋网络中心硬件维修系统</title>
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
-    <link href="//cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="js/params.js"></script>
     <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <nav class="blue">
-        <div class="nav-wrapper">
-            <ul id="nav-mobile" class="right hide-on-med-and-down button-collapse">
-                <li><a href="#">维修记录</a></li>
-                <li><a href="#">工作人员入口</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="section blue">
-        <div class="container blue">
-            <div class="row">
-                <div class="col s12 m6 l6">
-                    <div class="card blue lighten-1 z-depth-4">
-                        <div class="card-content white-text">
-                            <span class="card-title">预约信息</span>
-                            <table class="">
-                                <thead>
-                                    <th></th>
-                                    <th></th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>姓名</td>
-                                        <td id="get_name"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>学号</td>
-                                        <td id="get_stu_id"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>服务类型</td>
-                                        <td id="get_service_type"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>附加内容</td>
-                                        <td id="get_comment"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-action">
-                            <div id="spin-submit" class="white-text">Loading <i class="fa fa-spinner fa-pulse"></i></div>
-                            <button id="submit" class="btn waves-effect yellow darken-2">维修完毕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="js/order.js"></script>
+<script>
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    secretID = getUrlVars()["secret"];
+    console.log(secretID);
+    window.location.replace("/#/orders/" + secretID);
+</script>
 </body>
 </html>
