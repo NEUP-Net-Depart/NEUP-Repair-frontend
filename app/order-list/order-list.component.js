@@ -9,6 +9,7 @@ angular
         bindings: { orders: '<' },
         controller: ['$http', function($http) {
             var self = this;
+            self.secretID = "";
             self.toHuman = {
                 "id": "ID",
                 "date": "预约时间",

@@ -4,6 +4,14 @@
         从该预约系统正式启用后所有的预约维修都显示在下面了哦=￣ω￣=
     </div>
     <div class="row">
+        <div class="col l6 m6 s6">
+            <input type="text" ng-model="$ctrl.secretID" placeholder="输入你的秘钥进行查询">
+        </div>
+        <div class="col l6 m6 s6">
+            <a class="btn waves-effect blue" ui-sref="order({ secretID: $ctrl.secretID })">查询预约</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col s12 m12 l12">
             <table class="a-depth-3 table-hover">
                 <thead class="black-text">
@@ -25,9 +33,9 @@
     </div>
     <div class="row">
         <ul class="pagination center-align">
-            <li class="{{ $ctrl.disable_prev }}"><a ui-sref="orders({ page: {{$ctrl.prevPage}} })"><i class="material-icons">chevron_left</i></a></li>
+            <li class="{{ $ctrl.disable_prev }}"><a ui-sref="orders({ page: $ctrl.prevPage })"><i class="material-icons">chevron_left</i></a></li>
             <li ng-repeat="i in $ctrl.PageArr" class="{{ i.on }}"><a ui-sref="orders({page: {{i.index}} })">{{ i.index }}</a></li>
-            <li class="{{ $ctrl.disable_next }}"><a ui-sref="orders({ page: {{$ctrl.nextPage}} })"><i class="material-icons">chevron_right</i></a></li>
+            <li class="{{ $ctrl.disable_next }}"><a ui-sref="orders({ page: $ctrl.nextPage })"><i class="material-icons">chevron_right</i></a></li>
         </ul>
     </div>
 </div>
