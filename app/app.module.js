@@ -6,8 +6,10 @@ var myApp = angular.module('neupRepair', [
     'ui.router',
     'navbar',
     'welcome',
+    'admin',
     'order',
-    'orderList'
+    'orderList',
+    'ngCookies'
 ]);
 
 // UI-Router的版本很重要，不然就没法用component routing了
@@ -59,16 +61,27 @@ myApp.config(function($stateProvider){
     var adminState = {
         name: 'admin',
         url: '/admin',
-        template: '<h1>Admin</h1>'
+        component: 'admin',
+        onEnter: function() {
+            $("#nav").removeClass('blue');
+            $("#nav").addClass('black');
+        },
+        onExit: function(){
+            $("#nav").removeClass("black");
+            $("#nav").addClass("blue");
+        }
     };
     
     $stateProvider.state(homeState);
     $stateProvider.state(listState);
     $stateProvider.state(adminState);
     $stateProvider.state(specOrderState);
+    $stateProvider.onInvalid(function(){
+        $stateProvider.go('home');
+    })
 });
 
-myApp.run(['$trace', function($trace) {
+myApp.run(['$trace', '$transitions', '$state', '$http', '$cookies' , function($trace, $transitions, $state, $http, $cookies) {
     //Fire an Welcome Image
     console.log(
         ' _   _ _____ _   _ ____    ____                  _' + '\n' +
@@ -81,6 +94,17 @@ myApp.run(['$trace', function($trace) {
     console.log('噫，被你发现惹=w=，欢迎小伙伴们加入先锋网络中心\n网络部: http://github.com/NEUP-Net-Depart/\n硬件部: http://url.here\n运维部: http://url.here')
     
     $trace.enable('TRANSITION');
+    $transitions.onError(function() {
+        //$state.go('home');
+    });
+    
+    $transitions.onEnter({ }, function(transition, state) {
+        //console.log("Wooow");
+    });
+    
+    $http.defaults.headers.common = {
+        'X-NEUPRepair-Token': $cookies.get('X-NEUPRepair-Token')
+    }
    
 }]);
 

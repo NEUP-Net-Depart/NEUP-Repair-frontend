@@ -1,0 +1,25 @@
+<div class="section black">
+   <div class="container black white-text">
+      <div class="row" id="login-form" ng-hide="$ctrl.logged">
+         <h3 class="center-align"><i class="fa fa-lock"></i>工作人员入口</h3>
+         <div class="input-field col s12 m12 l12 white-text">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" name="user_name" ng-model="$ctrl.auth.user_name" placeholder="用户名"/>
+         </div>
+         <div class="input-field col s12 m12 l12 white-text">
+            <i class="material-icons prefix">vpn_key</i>
+            <input type="password" name="password" ng-model="$ctrl.auth.password" placeholder="密码"/>
+         </div>
+         <div class="col s6 m6 l6">
+            <button class="btn grey waves-effect" ng-click="$ctrl.doLogin()">Login</button>
+         </div>
+      </div>
+
+      <div class="row" ng-show="$ctrl.logged">
+         <h3 class="center-align"><i class="fa fa-unlock"></i>工作人员入口</h3>
+         <h5>欢迎，您目前为登录状态, 可以进行维修登记</h5>
+         <br>
+         <button class="btn grey waves-effect" ng-click="$ctrl.Logout()">登出</button>
+      </div>
+   </div>
+</div>
