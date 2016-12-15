@@ -9,6 +9,8 @@
         </div>
         <div class="col l6 m6 s6">
             <a class="btn waves-effect blue" ui-sref="order({ secretID: $ctrl.secretID })">查询预约</a>
+            <button ng-click="$ctrl.ToggleNotDone()" class="btn orange waves-effect">{{ $ctrl.ToggleNotDoneText }}</button>
+            <button ng-click="$ctrl.ToggleThisWeek()" class="btn orange waves-effect">{{ $ctrl.ToggleThisWeekText }}</button>
         </div>
     </div>
     <div class="row">
@@ -20,7 +22,7 @@
                 <th>操作(仅限工作人员)</th>
                 </thead>
                 <tbody>
-                <tr ng-repeat="val in $ctrl.orderData">
+                <tr ng-repeat="val in $ctrl.orderData" class="order-list-item">
                     <td ng-repeat="(itemkey, itemval) in val">{{ itemval }}</td>
                     <td>
                         <button class="btn waves-effect red" ng-click="$ctrl.expireOrder(val.id)">Expire</button>

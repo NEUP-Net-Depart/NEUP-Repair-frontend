@@ -265,6 +265,88 @@
 }
 */
 
+/* Here we add Angular animations */
+
+.order-list-item.ng-enter,
+.order-list-item.ng-leave,
+.order-list-item.ng-move {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -ms-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.order-list-item.ng-enter,
+.order-list-item.ng-move{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.order-list-item.ng-enter.ng-enter-active,
+.order-list-item.ng-move.ng-move-active {
+    opacity: 1;
+    overflow: hidden;
+}
+
+.order-list-item.ng-leave {
+    opacity: 1;
+    overflow: hidden;
+}
+
+.order-list-item.ng-leave.ng-leave-active {
+    opacity: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.view-render {
+    position: relative;
+}
+
+.view-render.ng-enter,
+.view-render.ng-leave {
+    background: white;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 64px;
+}
+
+.view-render.ng-enter {
+    -webkit-animation: 1s fade-in ;
+    -moz-animation: 1s fade-in ;
+    -o-animation: 1s fade-in;
+    animation: 1s fade-in;
+    z-index: 100;
+}
+
+.view-render.ng-leave {
+    -webkit-animation: 1s fade-out ;
+    -moz-animation: 1s fade-out ;
+    -o-animation: 1s fade-out;
+    animation: 1s fade-out;
+    z-index: 99;
+}
+
+@keyframes fade-in {
+    from{
+        opacity: 0
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from{
+        opacity: 1
+    }
+    to {
+        opacity: 0;
+    }
+}
 
 @media all and (min-width: 50px)   {  .auto-size-font  { font-size:0.1em;  } }
 @media all and (min-width: 100px)  {  .auto-size-font  { font-size:0.2em;  } }

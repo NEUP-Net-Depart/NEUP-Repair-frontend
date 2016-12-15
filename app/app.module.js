@@ -9,7 +9,8 @@ var myApp = angular.module('neupRepair', [
     'admin',
     'order',
     'orderList',
-    'ngCookies'
+    'ngCookies',
+    'ngAnimate'
 ]);
 
 // UI-Router的版本很重要，不然就没法用component routing了

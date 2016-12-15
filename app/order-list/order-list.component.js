@@ -7,7 +7,7 @@ angular
     .component('orderList',{
         templateUrl: 'order-list/order-list.template.html',
         bindings: { orders: '<' },
-        controller: ['$http', function($http) {
+        controller: ['$http', '$filter', function($http, $filter) {
             var self = this;
             self.secretID = "";
             self.toHuman = {
@@ -77,6 +77,68 @@ angular
             self.expireOrder = function(id) {
                 // Here add expire logic
                 Materialize.toast("Expire Complete", 1000, "green");
+            };
+            
+            console.log(self.orderData);
+            togglend = false;
+            self.dat1 = self.orderData;
+            self.dat2 = self.orderData;
+            self.ToggleNotDoneText = "只显示未完成预约";
+            self.ToggleNotDone = function() {
+                if(!togglend) {
+                    self.dat1 = $filter('filter')(self.dat1, {
+                        done_flag: false,
+                    });
+                    self.ToggleNotDoneText = "显示未完成&已完成预约";
+                } else {
+                    self.dat1 = $filter('filter')(orders.data.data, {});
+                    self.ToggleNotDoneText = "只显示未完成预约";
+                }
+                self.orderData = intersect(self.dat1,self.dat2);
+                togglend = !togglend;
+            };
+            
+            toggletw = false;
+            self.ToggleThisWeekText = "只显示本周预约";
+            self.ToggleThisWeek = function() {
+                if(!toggletw) {
+                    arr = [];
+                    self.dat2 = $filter('filter')(self.dat2, weekFilter)
+                    self.ToggleThisWeekText = "显示全部预约";
+                } else {
+                    self.dat2 = $filter('filter')(orders.data.data, {})
+                    self.ToggleThisWeekText = "只显示本周预约";
+                }
+                self.orderData = intersect(self.dat1,self.dat2);
+                toggletw = !toggletw;
+            };
+            
+            function intersect(arr1, arr2) {
+               tarr = [];
+               flag = {};
+               for(var i = 0; i < arr1.length; i++) {
+                   for(var j = 0; j < arr2.length; j++) {
+                       if(arr1[i] == arr2[j] && flag[arr1[i].id] == undefined) {
+                           tarr.push(arr1[i]);
+                           flag[arr1[i].id] = true;
+                       }
+                   }
+               }
+               return tarr;
+            }
+    
+            weekFilter = function(value, index, array) {
+                now_date = new Date(Date.now());
+                delta = now_date.getDay();
+                first_day_date = new Date(now_date.setDate(now_date.getDate() - delta + 1));
+                now_date = new Date(Date.now());
+                last_day_date = new Date(now_date.setDate(now_date.getDate() + 7 - delta));
+                cur_date = new Date(value.create_time)
+                if(cur_date >= first_day_date && cur_date <= last_day_date) {
+                    console.log(cur_date + " Satisfied");
+                    return true
+                }
+                return false;
             }
         }]
     });
