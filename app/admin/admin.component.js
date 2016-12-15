@@ -54,6 +54,30 @@ angular
                 return
             });
             
+            $http({
+                method: 'GET',
+                url: host + '/api/v1/announce',
+            }).then(function(resp){
+                data = resp.data;
+                self.announce = data.data;
+            });
+            
+            
+            self.Update = function() {
+                $http({
+                    method: 'PUT',
+                    url: host +'/api/v1/announce',
+                    data: {announce: self.announce }
+                }).then(function(resp){
+                    data = resp.data;
+                    if(!data.success) {
+                        Materialize.toast(data.msg, 2000, "red");
+                        return
+                    }
+                    Materialize.toast("更新成功", 2000, "green");
+                })
+            };
+            
             self.Logout = function() {
                 $cookies.remove('X-NEUPRepair-Token');
                 window.location.reload()

@@ -46,43 +46,69 @@
             <h1 class="col s2 m2 l2 white-text big-font">;)</h1>
             <h4 class="col white-text big-font text-center">填写表格进行报名哦</h4>
         </div>
+        <div class="black-text">
+            <b>公告:</b><br>
+            <h5>{{ $ctrl.announce }}</h5>
+        </div>
         <div class="row white-text">
             <form class="col s12 m12 l12" method="POST">
                 <div class="row">
-                    <div class="input-field col s12 m12 l12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate" name="name" required>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input placeholder="请输入姓名 如 夏娜" id="name" type="text" class="validate" name="name" required>
+                        </div>
                     </div>
-                    <div class="input-field col s12 m12 l12">
-                        <i class="material-icons prefix">credit_card</i>
-                        <input placeholder="请输入学号" id="stu_id" type="text" class="validate" name="stu_id" required>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">credit_card</i>
+                            <input placeholder="请输入学号" id="stu_id" type="text" class="validate" name="stu_id" required>
+                        </div>
                     </div>
-                    <div class="input-field col s6 m6 l6">
-                        <i class="material-icons prefix">settings</i>
-                        <select id="service_type" required>
-                            <option value="none" disabled selected>请选择服务类型</option>
-                            <option value="os_inst">安装系统</option>
-                            <option value="software_inst">软件安装</option>
-                            <option value="hardware_fix">配件更换</option>
-                            <option value="cleanup">清灰</option>
-                            <option value="data_recover">数据恢复</option>
-                            <option value="others">其他</option>
-                        </select>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <i class="material-icons prefix">settings</i>
+                            <select id="service_type" required>
+                                <option value="none" disabled selected>请选择服务类型</option>
+                                <option value="os_inst">安装系统</option>
+                                <option value="software_inst">软件安装</option>
+                                <option value="hardware_fix">配件更换</option>
+                                <option value="cleanup">清灰</option>
+                                <option value="data_recover">数据恢复</option>
+                                <option value="others">其他</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s3 m3 l3 white-text">选择预约日期</div>
+                        <div class="input-field col s3 m3 l3 white-text">
+                            <input type="radio" name="date" value="tue" id="tue"/><label for="tue" class="white-text">星期二</label>
+                            <!-- label for is a must to active the radio button-->
+                            <input type="radio" name="date" value="fri" id="fri"/><label for="fri" class="white-text">星期五</label>
+                        </div>
                     </div>
-                    <div class="input-field col s3 m3 l3">请选择预约日期(自动选择仍可预约的最近的日期)</div>
-                    <div class="input-field col s3 m3 l3 white-text">
-                        <input type="radio" name="date" value="tue" id="tue"/><label for="tue" class="white-text">星期二</label>
-                        <!-- label for is a must to active the radio button-->
-                        <input type="radio" name="date" value="fri" id="fri"/><label for="fri" class="white-text">星期五</label>
+                    <div class="row">
+                        <div class="input-field col s3 m3 l3 white-text">选择你所在的校区</div>
+                        <div class="input-field col s3 m3 l3">
+                            <input type="radio" name="area" value="南湖" id="nh"/><label for="nh" class="white-text">南湖</label>
+                            <!-- label for is a must to active the radio button-->
+                            <input type="radio" name="area" value="浑南" id="hn"/><label for="hn" class="white-text">浑南</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6 white-text">
+                            联系方式: (类型:号码) (如 QQ:100000)
+                            <input type="text" name="contact" placeholder="tel: 18823332333"/>
+                        </div>
                     </div>
-                    <div class="input-field col s12 m12 l12">
-                        <i class="material-icons prefix">mode_edit</i>
-                        <textarea name="comment" placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment" required></textarea>
-                        <label for="comment" class="white-text"></label>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea name="comment" placeholder="请用一句话描述你的需求，如果需要补充说明,也请写在这里" class="materialize-textarea" id="comment" required></textarea>
+                            <label for="comment" class="white-text"></label>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input name="agreement" id="agreement" class="read-first" type="checkbox" />
-                        <label class="white-text" for="agreement">我同意</label><a id="show-agreement" class="cursor-hand">《免责声明》</a>
+                    <div class="row">
+                        <div class="col">
+                            <input name="agreement" id="agreement" class="read-first" type="checkbox" />
+                            <label class="white-text" for="agreement">我同意</label><a id="show-agreement" class="cursor-hand">《免责声明》</a>
+                        </div>
                     </div>
                 </div>
                 <div class="row">

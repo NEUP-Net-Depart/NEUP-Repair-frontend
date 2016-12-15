@@ -5,17 +5,25 @@
 angular.module('welcome')
     .component('welcome', {
         templateUrl: 'welcome/welcome.template.html',
-        controller: [function() {
+        controller: ['$http', function($http) {
             var self = this;
             
             //Init Clipboard
             var clipboard = new Clipboard('#clipboard-btn');
             clipboard.on('success', function(e) {
-                Materialize.toast("复制成功 " + e.text, 1000, "green");
                 console.log('反正给别人看看又不会怀孕，窝们就不删debug信息咯');
+                Materialize.toast("复制成功 " + e.text, 1000, "green");
                 console.info('Action:', e.action);
                 console.info('Text:', e.text);
                 console.info('Trigger:', e.trigger);
+            });
+            
+            $http({
+                method: 'GET',
+                url: host + '/api/v1/announce',
+            }).then(function(resp){
+                data = resp.data;
+                self.announce = data.data;
             });
             
             function validate(obj) {
@@ -32,8 +40,16 @@ angular.module('welcome')
                     Materialize.toast("请选择服务类型", 2000, "red");
                     return false
                 }
-                if(obj["date"] == undefined) {
+                if(obj["date"] == undefined || obj["date"] == "") {
                     Materialize.toast("请选择日期", 2000, "red");
+                    return false
+                }
+                if(obj["area"] == undefined || obj["area"] == "") {
+                    Materialize.toast("请选择所在校区", 2000, "red");
+                    return false
+                }
+                if(obj["contact"] == "") {
+                    Materialize.toast("请填写联系方式以便我们及时与你联系", 2000, "red");
                     return false
                 }
                 if(obj["agreement"] == undefined) {
@@ -128,6 +144,7 @@ angular.module('welcome')
     
             $("#submit").click(function() {
                 jsonObj = JSON.stringify($('form').serializeObject());
+                console.log(jsonObj);
                 if(!validate(jsonObj)) return false;
                 $.ajax({
                     url: host + "/api/v1/orders",

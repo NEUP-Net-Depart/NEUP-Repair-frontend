@@ -16,10 +16,21 @@
       </div>
 
       <div class="row" ng-show="$ctrl.logged">
-         <h3 class="center-align"><i class="fa fa-unlock"></i>工作人员入口</h3>
-         <h5>欢迎，您目前为登录状态, 可以进行维修登记</h5>
-         <br>
-         <button class="btn grey waves-effect" ng-click="$ctrl.Logout()">登出</button>
+         <div class="row">
+            <h3 class="center-align"><i class="fa fa-unlock"></i>工作人员入口</h3>
+            <h5>欢迎，您目前为登录状态, 可以进行维修登记</h5>
+         </div>
+         <div class="row">
+            <h4>修改公告:</h4>
+            <div>注意:公告中不要存放重要信息，公告不保证可靠地存储</div>
+            <br>
+            <i class="material-icons">edit</i>
+            <textarea ng-model="$ctrl.announce" name="announce" class="materialize-textarea white-text"></textarea>
+            <button class="btn green waves-effect" ng-click="$ctrl.Update()">更新公告</button>
+         </div>
+         <div class="row">
+            <button class="btn grey waves-effect" ng-click="$ctrl.Logout()">登出</button>
+         </div>
       </div>
    </div>
 </div>

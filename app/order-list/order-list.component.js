@@ -12,6 +12,8 @@ angular
             self.secretID = "";
             self.toHuman = {
                 "id": "ID",
+                "area": "校区",
+                "contact": "联系方式",
                 "date": "预约时间",
                 "name": "姓名",
                 "stu_id": "学号",

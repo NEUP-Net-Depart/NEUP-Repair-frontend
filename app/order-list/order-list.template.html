@@ -18,12 +18,14 @@
             <table class="a-depth-3 table-hover">
                 <thead class="black-text">
                 <!-- using (k, v) will cause error, maybe the name is taken -->
-                <th ng-repeat="(key, val) in $ctrl.orderData[0]">{{ $ctrl.toHuman[key] }}</th>
+                <th ng-repeat="(key, val) in $ctrl.orderData[0]" ng-hide="key == 'update_time'">{{ $ctrl.toHuman[key] }}</th>
                 <th>操作(仅限工作人员)</th>
                 </thead>
                 <tbody>
                 <tr ng-repeat="val in $ctrl.orderData" class="order-list-item">
-                    <td ng-repeat="(itemkey, itemval) in val">{{ itemval }}</td>
+                    <td ng-repeat="(itemkey, itemval) in val" ng-hide="itemkey == 'update_time'">
+                        {{ itemval }}
+                    </td>
                     <td>
                         <button class="btn waves-effect red" ng-click="$ctrl.expireOrder(val.id)">Expire</button>
                     </td>
