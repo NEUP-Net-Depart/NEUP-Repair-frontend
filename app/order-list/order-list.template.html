@@ -24,8 +24,8 @@
                 <tbody>
                 <tr ng-repeat="val in $ctrl.orderData" class="order-list-item">
                     <td ng-repeat="(itemkey, itemval) in val" ng-hide="itemkey == 'update_time'">
-                        <span ng-if="itemkey == 'done_flag' && itemval == true" class="white-text green badge">done</span>
-                        <span ng-if="itemkey == 'done_flag' && itemval == false" class="white-text red badge">pending</span>
+                        <span ng-if="itemkey == 'done_flag' && itemval == true" class="white-text green badge"><i class="fa fa-check" aria-hidden="true"></i></span>
+                        <span ng-if="itemkey == 'done_flag' && itemval == false" class="white-text red badge"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
                         <span ng-if="itemkey != 'done_flag'">{{ itemval }}</span>
                     </td>
                     <td>
