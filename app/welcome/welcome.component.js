@@ -28,8 +28,9 @@ angular.module('welcome')
             
             function validate(obj) {
                 obj = $.parseJSON(obj);
-                if(obj["name"] == ""){
-                    Materialize.toast("请输入姓名", 2000, "red");
+				console.log(obj["name"].length);
+                if(obj["name"] == "" || obj["name"].length > 4 ){
+                    Materialize.toast("请正确输入姓名", 2000, "red");
                     return false
                 }
                 if(obj["stu_id"] == "" || isNaN(obj["stu_id"])) {

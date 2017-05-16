@@ -29,6 +29,12 @@ myApp.config(function($stateProvider){
                 });
                 return orders;
             }
+        },
+		onEnter: function(){
+            $("#nav").removeClass("green");
+            $("#nav").removeClass("black");
+            $("#nav").removeClass("red");
+            $("#nav").addClass("blue");
         }
     };
     
@@ -46,17 +52,19 @@ myApp.config(function($stateProvider){
             }
         },
         // Here we change the navbar style when route exit
-        onExit: function(){
-            $("#nav").removeClass("green");
-            $("#nav").removeClass("red");
-            $("#nav").addClass("blue");
-        }
+       
     };
     
     var homeState = {
         name: 'home',
         url: '',
-        component: 'welcome'
+        component: 'welcome',
+		onEnter: function(){
+            $("#nav").removeClass("green");
+            $("#nav").removeClass("black");
+            $("#nav").removeClass("red");
+            $("#nav").addClass("blue");
+        }
     };
     
     var adminState = {
@@ -66,11 +74,11 @@ myApp.config(function($stateProvider){
         onEnter: function() {
             $("#nav").removeClass('blue');
             $("#nav").addClass('black');
-        },
-        onExit: function(){
-            $("#nav").removeClass("black");
-            $("#nav").addClass("blue");
         }
+        //onExit: function(){
+        //    $("#nav").removeClass("black");
+        //    $("#nav").addClass("blue");
+        //}
     };
     
     $stateProvider.state(homeState);
