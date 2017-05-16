@@ -29,7 +29,9 @@ angular
                 "hardware_fix" : "硬件更换、维修",
                 "data_recover" : "数据恢复",
                 "cleanup" : "清灰",
-                "others" : "其他"
+                "others" : "其他", 
+                "fri" : "星期五",
+                "tue" : "星期二"
     
             };
             orders = self.orders;
@@ -40,6 +42,10 @@ angular
                 Materialize.toast("Success! " , 1000, "green");
             }
             console.log(orders);
+			for(i in orders.data.data) {
+				orders.data.data[i].service_type = self.toHuman[orders.data.data[i].service_type];
+				orders.data.data[i].date = self.toHuman[orders.data.data[i].date];
+			}
             self.orderData = orders.data.data;
     
             // Set Pager Begin
