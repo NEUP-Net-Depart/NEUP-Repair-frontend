@@ -3,5 +3,6 @@
  */
 
 angular.module('order', [
-    'ui.router'
+    'ui.router',
+	'ngCookies'
 ]);

@@ -10,7 +10,7 @@ angular
             secretID: '<'
         },
         templateUrl: 'order/order.template.html',
-        controller: ['$http', function($http) {
+        controller: ['$http', '$cookies', function($http, $cookies) {
             var self = this;
             console.log(self.secretID);
             
@@ -80,6 +80,10 @@ angular
                             submitted = true;
                         }
                         else {
+						    if(data.msg == "没有权限进行此操作") {
+							    $cookies.put("redirect", self.secretID);
+								window.location.href = "/#/admin";
+							}
                             Materialize.toast(data.msg, 4000, "red");
                         }
                     }

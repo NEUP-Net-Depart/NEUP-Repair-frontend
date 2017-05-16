@@ -35,7 +35,12 @@ angular
                     if(data.success){
                         Materialize.toast("登录成功", 2000, "green");
                         $cookies.put("X-NEUPRepair-Token", data.data);
-                        window.location.reload()
+						var redirect = $cookies.get("redirect");
+						if(redirect) {
+							$cookies.remove("redirect");
+						    window.location.href = "/#/orders/" + redirect;
+						}
+						window.location.reload()
                     }
                 })
             };
