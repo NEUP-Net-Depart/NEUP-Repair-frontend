@@ -82,7 +82,7 @@ angular.module('welcome')
                 $(".full-height").removeClass('full-height');
                 $("#hidden-table").show();
                 $("html, body").animate({
-                    scrollTop: $("#hidden-table").offset().top
+                    scrollTop: $("#hidden-table").offset().top - $(".nav-wrapper").height()
                 }, 1000);
                 $("#hidden-table").addClass("hidden-table-show");
             };
@@ -127,7 +127,7 @@ angular.module('welcome')
                 skip();
                 /* Introduction is not useful to him, lead him to form*/
                 $("html, body").animate({
-                    scrollTop: $("#hidden-table").offset().top
+                    scrollTop: $("#hidden-table").offset().top - $(".nav-wrapper").height()
                 }, 1000);
             });
     
