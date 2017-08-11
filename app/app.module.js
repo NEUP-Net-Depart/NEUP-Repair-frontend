@@ -54,10 +54,22 @@ myApp.config(function($stateProvider){
         // Here we change the navbar style when route exit
        
     };
+
+    var initState = {
+        name: 'init',
+        url: '',
+        component: 'welcome',
+        onEnter: function(){
+            $("#nav").removeClass("green");
+            $("#nav").removeClass("black");
+            $("#nav").removeClass("red");
+            $("#nav").addClass("blue");
+        }
+    };
     
     var homeState = {
         name: 'home',
-        url: '',
+        url: '/',
         component: 'welcome',
 		onEnter: function(){
             $("#nav").removeClass("green");
@@ -80,13 +92,14 @@ myApp.config(function($stateProvider){
         //    $("#nav").addClass("blue");
         //}
     };
-    
+
+    $stateProvider.state(initState);
     $stateProvider.state(homeState);
     $stateProvider.state(listState);
     $stateProvider.state(adminState);
     $stateProvider.state(specOrderState);
     $stateProvider.onInvalid(function(){
-        $stateProvider.go('home');
+        $stateProvider.go('init');
     })
 });
 
