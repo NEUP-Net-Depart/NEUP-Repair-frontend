@@ -29,10 +29,14 @@ angular
                 "hardware_fix" : "硬件更换、维修",
                 "data_recover" : "数据恢复",
                 "cleanup" : "清灰",
-                "others" : "其他", 
+                "others" : "其他",
+                "mon" : "星期一",
+                "tue" : "星期二",
+                "wed" : "星期三",
+                "thu" : "星期四",
                 "fri" : "星期五",
-                "tue" : "星期二"
-    
+                "sat" : "星期六",
+                "sun" : "星期日",
             };
             orders = self.orders;
             if(!orders.success) {

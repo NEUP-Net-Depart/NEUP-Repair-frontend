@@ -7,7 +7,7 @@ angular.module('welcome')
         templateUrl: 'welcome/welcome.template.html',
         controller: ['$http', function($http) {
             var self = this;
-            
+
             //Init Clipboard
             var clipboard = new Clipboard('#clipboard-btn');
             clipboard.on('success', function(e) {
@@ -177,17 +177,21 @@ angular.module('welcome')
                 return false;
                 // Active Modal
             });
-    
-            var date = "";
-    
-            $("#fri").click(function() {
-                date = "fri";
+
+            $("input[name='area']").change(function (){
+                if ($("input[name='area']:checked").val() == "南湖") {
+                    $("#weekday0").val('tue');
+                    $("label[for='weekday0']").html("星期二");
+                    $("#weekday1").val('fri');
+                    $("label[for='weekday1']").html("星期五");
+                } else {
+                    $("#weekday0").val('wed');
+                    $("label[for='weekday0']").html("星期三");
+                    $("#weekday1").val('sun');
+                    $("label[for='weekday1']").html("星期日");
+                }
             });
-    
-            $("#tue").click(function() {
-                date = "tue";
-            });
-    
+
             /* Use for convert form to JSON */
             $.fn.serializeObject = function()
             {
@@ -205,7 +209,7 @@ angular.module('welcome')
                 });
                 /* Add Service Type */
                 o['service_type'] = $("#service_type").val();
-                o['date'] = date;
+                o['date'] = $("input[name='date']:checked").val();
                 return o;
             };
             flag = setInterval(percentageGrow, 50);
