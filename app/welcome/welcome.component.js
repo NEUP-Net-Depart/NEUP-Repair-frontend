@@ -163,7 +163,7 @@ angular.module('welcome')
                             $("#result-modal-msg").html("此二维码为维修凭证 仅出现一次 请将此二维码截图并保存 或者复制此秘钥" +
                                 "<input id='secret_id' type='text' value="+ resp['secret_id'] + ">" +
                                 "<button id='clipboard-btn' class='btn waves-effect blue' data-clipboard-target='#secret_id'>点此复制到剪贴板</button>" +
-                                "<br><br><br>先锋硬件部预约维修时间为 每周二，周五晚7点至9点<br>维修地点:<br>南湖: 学生活动中心204<br>浑南: 五舍B104<br>如果想要咨询其他硬件，软件问题，欢迎加入东大电脑问题总群 群号码: 343106460"
+                                "<br><br><br>先锋硬件部预约维修时间为 南湖每周二周五，浑南每周三周日，晚7点至9点<br>维修地点:<br>南湖: 学生活动中心204<br>浑南: 五舍B104<br>如果想要咨询其他硬件，软件问题，欢迎加入东大电脑问题总群 群号码: 343106460"
                             );
                         }
                         else {
